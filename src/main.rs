@@ -11,6 +11,10 @@ macro_rules! days {
 }
 
 fn main() -> eyre::Result<()> {
+    use std::env;
+    unsafe {
+        env::set_var("RUST_BACKTRACE", "1");
+    }
     install_helpers()?;
 
     let mut args = std::env::args().peekable();

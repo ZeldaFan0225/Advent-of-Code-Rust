@@ -22,8 +22,8 @@ fn process_result(part: i32, input: &[u8]) -> u32 {
     let mut capture_numbers = false;
     let mut capture_match_count = 0;
 
-    let mut left_num = 0;
-    let mut right_num = 0;
+    let mut left_num: u32 = 0;
+    let mut right_num: u32 = 0;
     let mut write_right = false;
 
     let mut result: u32 = 0;
@@ -72,11 +72,11 @@ fn process_result(part: i32, input: &[u8]) -> u32 {
                     write_right = true;
                     continue;
                 }
-                b'0' | b'1' | b'2' | b'3' | b'4' | b'5' | b'6' | b'7' | b'8' | b'9' => {
+                b'0' ..= b'9' => {
                     if write_right {
-                        right_num = right_num * 10 + (char - b'0');
+                        right_num = right_num * 10 + (char - b'0') as u32;
                     } else {
-                        left_num = left_num * 10 + (char - b'0');
+                        left_num = left_num * 10 + (char - b'0') as u32;
                     }
                 }
                 b')' => {
