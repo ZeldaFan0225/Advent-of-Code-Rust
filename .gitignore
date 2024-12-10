@@ -1,0 +1,7 @@
+/target
+.idea
+
+inputs/20*/*
+
+flamegraph.svg
+perf.data*
